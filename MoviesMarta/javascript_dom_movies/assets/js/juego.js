@@ -35,13 +35,20 @@ const getMovie = function(){
     return movieDeck[randomIndex]
 }
 
+<<<<<<< Updated upstream
 const getRecurso = () => {
   if(elementDeck.length === 0){
       return null;
   }
   let index = Math.floor(Math.random() * elementDeck.length);
   return elementDeck.splice(index, 1)[0];
+=======
+const getRecurso = function(){
+  let randomIndex = Math.floor(Math.random() * elementDeck.length)
+  return elementDeck[randomIndex]
+>>>>>>> Stashed changes
 }
+
 
 
 let btNuevoJuego = document.getElementById('btNuevoJuego');
@@ -51,6 +58,7 @@ let contenedorRecursos = document.getElementById('elementos-pelicula');
 let contadorRecursos = 0;
 
 btNuevoJuego.addEventListener('click', function(event) {
+<<<<<<< Updated upstream
     contadorRecursos = 0;
     let movie = getMovie()
     contenedorImagen.innerHTML = ` <img class="elemento" src="assets/movies/${movie}.jpg" alt="Carátula">`
@@ -58,6 +66,16 @@ btNuevoJuego.addEventListener('click', function(event) {
     event.stopPropagation();
 });
 
+=======
+  contadorRecursos = 0;
+  let movie = getMovie();
+  contenedorImagen.innerHTML = `<img class="elemento" src="assets/movies/${movie}.jpg" alt="Carátula">`;
+  contenedorRecursos.innerHTML = ''; // Limpiar recursos anteriores
+  event.stopPropagation();
+});
+
+
+>>>>>>> Stashed changes
 btAdivina.addEventListener('click', function(event) {
     let recurso = getRecurso()
     contadorRecursos++
@@ -65,6 +83,11 @@ btAdivina.addEventListener('click', function(event) {
         contenedorRecursos.innerHTML += 
         `<img class="elemento" src="assets/characters/${recurso}.jpg" alt="Recurso">`
          event.stopPropagation();
+<<<<<<< Updated upstream
+=======
+    }else{
+        alert("No hay más opciones")
+>>>>>>> Stashed changes
     }
    
 });
