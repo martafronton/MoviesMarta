@@ -35,8 +35,12 @@ const getMovie = function(){
     return movieDeck[randomIndex]
 }
 
-const getRecurso = function(){
-    return elementDeck.pop()
+const getRecurso = () => {
+  if(elementDeck.length === 0){
+      return null;
+  }
+  let index = Math.floor(Math.random() * elementDeck.length);
+  return elementDeck.splice(index, 1)[0];
 }
 
 
@@ -47,6 +51,7 @@ let contenedorRecursos = document.getElementById('elementos-pelicula');
 let contadorRecursos = 0;
 
 btNuevoJuego.addEventListener('click', function(event) {
+    contadorRecursos = 0;
     let movie = getMovie()
     contenedorImagen.innerHTML = ` <img class="elemento" src="assets/movies/${movie}.jpg" alt="Carátula">`
     contenedorRecursos.innerHTML =  
@@ -60,11 +65,15 @@ btAdivina.addEventListener('click', function(event) {
         contenedorRecursos.innerHTML += 
         `<img class="elemento" src="assets/characters/${recurso}.jpg" alt="Recurso">`
          event.stopPropagation();
-    }else{
-        alert("No hay más opciones")
     }
    
 });
+
+
+
+
+
+  
 
 
 
